@@ -3,7 +3,7 @@ sudo: false
 
 language: node_js
 node_js:
-  - "10"
+  - "16"
 
 addons:
   apt:
@@ -18,7 +18,7 @@ cache:
 
 install:
   - npm install
-  - npm install --save bootstrap@3
+  - npm install --save bootstrap@5
 
 script:
   - ng lint
