@@ -26,7 +26,7 @@ git checkout -b gh-pages
 git push origin gh-pages
 npm audit fix
 npm prune 
-npm install -g angular-cli-ghpages
+#npm install -g angular-cli-ghpages
 npm install
 ng build --configuration production --aot --base-href "https://oliverwreath.github.io/Angular-RESTful/"
 ngh --dir=dist/angular-restful
@@ -37,8 +37,8 @@ ngh --dir=dist/angular-restful
 ```bash
 npm audit fix
 npm prune 
-#npm i @angular-devkit/build-angular@0.803
 npm install
+#npm install -g angular-cli-ghpages
 npm audit fix
 npm prune 
 npm install
