@@ -42,9 +42,9 @@ npm install
 npm audit fix
 npm prune 
 npm install
-ng update @angular/cli
-ng update @angular/core
-npm update
+#ng update @angular/cli
+#ng update @angular/core
+#npm update
 ```
 
 # Example Json data from provided api 
