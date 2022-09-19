@@ -11,6 +11,8 @@ import {ContactComponent} from './contact/contact.component';
 import {HeroComponent} from './hero/hero.component';
 import {NavComponent} from './nav/nav.component';
 import {HomeComponent} from './home/home.component';
+import {DiffcheckerComponent} from './diffchecker/diffchecker.component';
+import {CaseconverterComponent} from './caseconverter/caseconverter.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {HomeComponent} from './home/home.component';
     AboutComponent,
     ContactComponent,
     HeroComponent,
-    HomeComponent
+    HomeComponent,
+    DiffcheckerComponent,
+    CaseconverterComponent
   ],
   imports: [
     BrowserModule,

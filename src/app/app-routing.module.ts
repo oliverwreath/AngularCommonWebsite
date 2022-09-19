@@ -4,10 +4,14 @@ import {AboutComponent} from './about/about.component';
 import {ContactComponent} from './contact/contact.component';
 import {HeroComponent} from './hero/hero.component';
 import {HomeComponent} from './home/home.component';
+import {DiffcheckerComponent} from './diffchecker/diffchecker.component';
+import {CaseconverterComponent} from './caseconverter/caseconverter.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: DiffcheckerComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'diffchecker', component: DiffcheckerComponent},
+  {path: 'caseconverter', component: CaseconverterComponent},
   {path: 'hero', component: HeroComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},
