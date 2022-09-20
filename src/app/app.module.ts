@@ -13,6 +13,7 @@ import {NavComponent} from './nav/nav.component';
 import {HomeComponent} from './home/home.component';
 import {DiffcheckerComponent} from './diffchecker/diffchecker.component';
 import {CaseconverterComponent} from './caseconverter/caseconverter.component';
+import {NgxDiffModule} from 'ngx-diff';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {CaseconverterComponent} from './caseconverter/caseconverter.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxDiffModule
   ],
   providers: [],
   bootstrap: [AppComponent]
