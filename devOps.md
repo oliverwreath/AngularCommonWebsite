@@ -28,7 +28,8 @@ npm audit fix
 npm prune 
 #npm install -g angular-cli-ghpages
 npm install
-ng build --configuration production --aot --base-href "https://oliverwreath.github.io/Angular-RESTful/"
+#ng build --configuration production --aot --base-href "https://oliverwreath.github.io/Angular-RESTful/"
+ng build --configuration production --aot --base-href "http://todo.oliverhan.org/"
 ngh --dir=dist/angular-restful
 ```
 
