@@ -1,17 +1,17 @@
 <p>diffchecker works!</p>
 
-<form class="g-3">
+<form class="g-3" [formGroup]="form" (ngSubmit)="onCompare()">
   <div class="d-grid gap-2 col-6 mx-auto">
-    <button class="btn btn-success" type="button">Compare</button>
+    <button class="btn btn-success" type="submit">Compare</button>
   </div>
   <div class="row">
     <div class="col-md-6">
       <label for="inputOringinalText" class="form-label">Original Text</label>
-      <textarea class="form-control" id="inputOringinalText"></textarea>
+      <textarea class="form-control" id="inputOringinalText" rows="20" formControlName='originalText'></textarea>
     </div>
     <div class="col-md-6">
       <label for="inputChangedText" class="form-label">Changed Text</label>
-      <textarea class="form-control" id="inputChangedText"></textarea>
+      <textarea class="form-control" id="inputChangedText" rows="20" formControlName='changedText'></textarea>
     </div>
   </div>
 </form>
