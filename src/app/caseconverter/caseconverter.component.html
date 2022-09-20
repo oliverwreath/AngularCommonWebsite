@@ -1,1 +1,23 @@
-<p>caseconverter works!</p>
+<h3>Case Converter</h3>
+
+<form class="g-3">
+<!--  <div class="d-grid gap-2 col-6 mx-auto">-->
+<!--    <button class="btn btn-success" type="submit">Compare!</button>-->
+<!--  </div>-->
+  <div class="row">
+    <h5>Accidentally left the caps lock on and typed something, but can't be bothered to start again and retype it all?</h5>
+    <div class="col-md-12">
+      <label for="inputOringinalText" class="form-label">Simply enter your text and choose the case you want to convert it to.</label>
+      <textarea class="form-control" id="inputOringinalText" rows="20" [value]="oldText"></textarea>
+    </div>
+  </div>
+<!--  <div class="row">-->
+  <button class="btn btn-success" type="button" (click)="onUpper()">UPPER</button>
+  <button class="btn btn-success" type="button" (click)="onLower()">lower</button>
+  <button class="btn btn-success" type="button" (click)="onCapitalize()">Capitalize</button>
+  <button class="btn btn-success" type="button" (click)="onTitleCase()">Title Case</button>
+  <button class="btn btn-success" type="button" (click)="onSentenceCase()">Sentence case</button>
+  <button class="btn btn-success" type="button" (click)="onClear()">Clear</button>
+  <button class="btn btn-success" type="button" (click)="onExample()">Example</button>
+<!--  </div>-->
+</form>
