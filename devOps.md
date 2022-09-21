@@ -26,11 +26,10 @@ git checkout -b gh-pages
 git push origin gh-pages
 npm audit fix
 npm prune 
-#npm install -g angular-cli-ghpages
+#ng add angular-cli-ghpages --project Angular-RESTful
 npm install
-ng build --configuration production --aot --base-href "https://oliverwreath.github.io/Angular-RESTful/"
-#ng build --configuration production --aot --base-href "http://todo.oliverhan.org/"
-ngh --dir=dist/angular-restful
+#ng deploy --base-href=/Angular-RESTful/
+ng deploy --branch=gh-pages --cname=todo.oliverhan.org
 ```
 
 # Legacy slow step-by-step updates @angular/cli latest v14, supported v12
