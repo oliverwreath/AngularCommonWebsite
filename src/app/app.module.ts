@@ -14,6 +14,7 @@ import {HomeComponent} from './home/home.component';
 import {DiffcheckerComponent} from './diffchecker/diffchecker.component';
 import {CaseconverterComponent} from './caseconverter/caseconverter.component';
 import {NgxDiffModule} from 'ngx-diff';
+import {CsvConverterComponent} from './csv-converter/csv-converter.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {NgxDiffModule} from 'ngx-diff';
     HeroComponent,
     HomeComponent,
     DiffcheckerComponent,
-    CaseconverterComponent
+    CaseconverterComponent,
+    CsvConverterComponent
   ],
   imports: [
     BrowserModule,

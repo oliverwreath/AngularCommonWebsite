@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {CsvConverterService} from '../csv-converter.service';
 
 @Component({
   selector: 'app-caseconverter',
@@ -33,7 +34,7 @@ export class CaseconverterComponent implements OnInit {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.split('\n');
+    let rows = this.oldText.split(CsvConverterService.LINE_BREAK);
     for (let r = 0; r < rows.length; r++) {
       if (!rows[r])
         continue;
@@ -47,14 +48,14 @@ export class CaseconverterComponent implements OnInit {
       }
       rows[r] = words.join(" ");
     }
-    this.oldText = rows.join('\n');
+    this.oldText = rows.join(CsvConverterService.LINE_BREAK);
   }
 
   onTitleCase() {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.split('\n');
+    let rows = this.oldText.split(CsvConverterService.LINE_BREAK);
     for (let r = 0; r < rows.length; r++) {
       if (!rows[r])
         continue;
@@ -77,7 +78,7 @@ export class CaseconverterComponent implements OnInit {
       s = words.join(" ") + (isEndingDot?".":" ");
       rows[r] = s;
     }
-    this.oldText = rows.join('\n');
+    this.oldText = rows.join(CsvConverterService.LINE_BREAK);
   }
 
   onSentenceCase() {
@@ -98,7 +99,7 @@ export class CaseconverterComponent implements OnInit {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.split('\n');
+    let rows = this.oldText.split(CsvConverterService.LINE_BREAK);
     for (let r = 0; r < rows.length; r++) {
       let row = Array.from(rows[r]);
       let left = 0, right = row.length - 1;
@@ -109,34 +110,34 @@ export class CaseconverterComponent implements OnInit {
       }
       rows[r] = row.join("");
     }
-    this.oldText = rows.join('\n');
+    this.oldText = rows.join(CsvConverterService.LINE_BREAK);
   }
 
   onUpsideDown() {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.split('\n');
+    let rows = this.oldText.split(CsvConverterService.LINE_BREAK);
     let left = 0, right = rows.length - 1;
     while (left < right) {
       const tmp = rows[left];
       rows[left++] = rows[right];
       rows[right--] = tmp;
     }
-    this.oldText = rows.join('\n');
+    this.oldText = rows.join(CsvConverterService.LINE_BREAK);
   }
 
   onTrim() {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.split('\n');
+    let rows = this.oldText.split(CsvConverterService.LINE_BREAK);
     for (let r = 0; r < rows.length; r++) {
       if (!rows[r])
         continue;
 
       rows[r] = rows[r].trim();
     }
-    this.oldText = rows.join('\n');
+    this.oldText = rows.join(CsvConverterService.LINE_BREAK);
   }
 }
