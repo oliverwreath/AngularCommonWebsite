@@ -6,12 +6,14 @@ import {HeroComponent} from './hero/hero.component';
 import {HomeComponent} from './home/home.component';
 import {DiffcheckerComponent} from './diffchecker/diffchecker.component';
 import {CaseconverterComponent} from './caseconverter/caseconverter.component';
+import {CsvConverterComponent} from './csv-converter/csv-converter.component';
 
 const routes: Routes = [
   {path: '', component: DiffcheckerComponent},
   {path: 'home', component: HomeComponent},
   {path: 'diffchecker', component: DiffcheckerComponent},
   {path: 'caseconverter', component: CaseconverterComponent},
+  {path: 'csvconverter', component: CsvConverterComponent},
   {path: 'hero', component: HeroComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},
