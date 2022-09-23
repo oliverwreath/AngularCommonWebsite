@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CsvConverterService} from '../csv-converter.service';
+import {OutputType, Separator} from './csvEnum';
 
 @Component({
   selector: 'app-csv-converter',
@@ -9,19 +10,28 @@ import {CsvConverterService} from '../csv-converter.service';
 export class CsvConverterComponent implements OnInit {
   inputText: string = '';
   outputText: string = '';
-  private static example: string = 'id,language\n1,angular\n2,react\n3,scala';
+  private static commaExample: string = 'id,language\n1,angular\n2,react\n3,scala';
+  separator: Separator = Separator.Comma;
+  outputType: OutputType = OutputType.Array;
 
   constructor(private csvConverterService: CsvConverterService) { }
 
   ngOnInit(): void {
-    this.inputText = CsvConverterComponent.example;
+    this.onExample();
+  }
+
+  test() {
+    console.log('testing logs: ')
+    console.log(this.separator);
+    console.log(this.outputType);
   }
 
   onToJson() {
     if (!this.inputText)
       return;
+    this.test();
 
-    this.outputText = this.csvConverterService.csvToJson(this.inputText);
+    this.outputText = this.csvConverterService.csvToJson(this.inputText, this.separator);
   }
 
   onToXml() {
@@ -37,6 +47,21 @@ export class CsvConverterComponent implements OnInit {
   }
 
   onExample() {
-    this.inputText = CsvConverterComponent.example;
+    this.inputText = '';
+    console.log(this.separator);
+    if (this.separator == Separator.Comma) {
+      console.log(1);
+      this.inputText = CsvConverterComponent.commaExample;
+    } else if (this.separator == Separator.SemiColon) {
+      console.log(2);
+      this.inputText = CsvConverterComponent.commaExample.replace(/,/g, Separator.SemiColon);
+    } else {
+      console.log(3);
+      this.inputText = CsvConverterComponent.commaExample.replace(/,/g, Separator.Pipe);
+    }
+  }
+
+  onClearRight() {
+    this.outputText = '';
   }
 }
