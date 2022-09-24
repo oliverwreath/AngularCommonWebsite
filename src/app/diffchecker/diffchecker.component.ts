@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {StringUtilsService} from '../string-utils.service';
 
 @Component({
   selector: 'app-diffchecker',
@@ -7,8 +7,50 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./diffchecker.component.css']
 })
 export class DiffcheckerComponent implements OnInit {
-  form = new FormGroup({
-    oldText: new FormControl<string>('This part of the\n' +
+  oldTextContents: string = '';
+  newTextContents: string = '';
+  isHidden: boolean = true;
+
+  constructor() { }
+
+  ngOnInit(): void {
+    this.onExample();
+  }
+
+  onCompare() {
+    console.warn(this.oldTextContents);
+    if (this.oldTextContents && this.newTextContents) {
+      this.isHidden = !this.isHidden;
+    }
+  }
+
+  toLowerCase() {
+    this.oldTextContents = StringUtilsService.toLowerCase(this.oldTextContents);
+    this.newTextContents = StringUtilsService.toLowerCase(this.newTextContents);
+  }
+
+  removeExcessiveWhiteSpace() {
+    console.log('removeExcessiveWhiteSpace()')
+    console.log(`this.oldTextContents = ${this.oldTextContents}`)
+    console.log(`this.newTextContents = ${this.newTextContents}`)
+    this.oldTextContents = StringUtilsService.removeExcessiveWhiteSpace(this.oldTextContents);
+    this.newTextContents = StringUtilsService.removeExcessiveWhiteSpace(this.newTextContents);
+    console.log(`this.oldTextContents = ${this.oldTextContents}`)
+    console.log(`this.newTextContents = ${this.newTextContents}`)
+  }
+
+  sortLines() {
+    this.oldTextContents = StringUtilsService.sortLines(this.oldTextContents);
+    this.newTextContents = StringUtilsService.sortLines(this.newTextContents);
+  }
+
+  replaceLineBreaksWithSpaces() {
+    this.oldTextContents = StringUtilsService.replaceLineBreaksWithSpaces(this.oldTextContents);
+    this.newTextContents = StringUtilsService.replaceLineBreaksWithSpaces(this.newTextContents);
+  }
+
+  private onExample() {
+    this.oldTextContents = 'This part of the\n' +
       'document has stayed the\n' +
       'same from version to\n' +
       'version.  It shouldn\'t\n' +
@@ -18,7 +60,7 @@ export class DiffcheckerComponent implements OnInit {
       'compress the size of the\n' +
       'changes.\n' +
       '\n' +
-      'This paragraph contains\n' +
+      'This      paragraph contains\n' +
       'text that is outdated.\n' +
       'It will be deleted in the\n' +
       'near future.\n' +
@@ -31,10 +73,10 @@ export class DiffcheckerComponent implements OnInit {
       'Nothing in the rest of\n' +
       'this paragraph needs to\n' +
       'be changed. Things can\n' +
-      'be added after it.'),
-    newText: new FormControl<string>('This is an important\n' +
-      'notice! It should\n' +
-      'therefore be located at\n' +
+      'be added after it.';
+    this.newTextContents = 'This is an important\n' +
+      'notice!     It should\n' +
+      'therefore be added at\n' +
       'the beginning of this\n' +
       'document!\n' +
       '\n' +
@@ -60,24 +102,6 @@ export class DiffcheckerComponent implements OnInit {
       '\n' +
       'This paragraph contains\n' +
       'important new additions\n' +
-      'to this document.')
-  })
-  oldTextContents: string = '';
-  newTextContents: string = '';
-  isHidden: boolean = true;
-
-  constructor() { }
-
-  ngOnInit(): void {  }
-
-  onCompare() {
-    console.log('onCompare begin');
-    console.warn(this.form.value);
-    if (this.form.value.oldText && this.form.value.newText) {
-      this.oldTextContents = this.form.value.oldText;
-      this.newTextContents = this.form.value.newText;
-      this.isHidden = false;
-    }
-    console.log('onCompare end');
+      'to this document.';
   }
 }

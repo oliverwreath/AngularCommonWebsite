@@ -8,3 +8,6 @@ export enum Separator {
   SemiColon = ';',
   Pipe = '|',
 }
+export enum LineBreak {
+  Default = '\n'
+}
