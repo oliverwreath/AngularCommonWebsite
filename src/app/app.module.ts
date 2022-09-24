@@ -15,6 +15,7 @@ import {DiffcheckerComponent} from './diffchecker/diffchecker.component';
 import {CaseconverterComponent} from './caseconverter/caseconverter.component';
 import {NgxDiffModule} from 'ngx-diff';
 import {CsvConverterComponent} from './csv-converter/csv-converter.component';
+import {CsvValidatorComponent} from './csv-validator/csv-validator.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {CsvConverterComponent} from './csv-converter/csv-converter.component';
     HomeComponent,
     DiffcheckerComponent,
     CaseconverterComponent,
-    CsvConverterComponent
+    CsvConverterComponent,
+    CsvValidatorComponent
   ],
   imports: [
     BrowserModule,
