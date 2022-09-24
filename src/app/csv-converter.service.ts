@@ -5,17 +5,15 @@ import {Injectable} from '@angular/core';
 })
 export class CsvConverterService {
   static LINE_BREAK: string = '\n';
-  static OPENING_BRACKET: string = '{\n';
-  static CLOSING_BRACKET: string = '}';
-  static OPENING_SQUARE_BRACKET: string = '[\n';
-  static CLOSING_SQUARE_BRACKET: string = ']';
-  private COMMA_SEPARATOR: string = ',';
-  private SEMI_COLON_SEPARATOR: string = ';';
-  private PIPE_SEPARATOR: string = '|';
+  private static OPENING_BRACKET: string = '{\n';
+  private static CLOSING_BRACKET: string = '}';
+  private static OPENING_SQUARE_BRACKET: string = '[\n';
+  private static CLOSING_SQUARE_BRACKET: string = ']';
+  private static COMMA_SEPARATOR: string = ',';
 
   constructor() { }
 
-  csvToJson(csv: string, separator: string = this.COMMA_SEPARATOR): string {
+  static csvToJson(csv: string, separator: string = this.COMMA_SEPARATOR): string {
     if (!csv)
       return csv;
 
@@ -57,7 +55,7 @@ export class CsvConverterService {
     return result;
   }
 
-  csvToXml(csv: string, separator: string = this.COMMA_SEPARATOR): string {
+  static csvToXml(csv: string, separator: string = this.COMMA_SEPARATOR): string {
     if (!csv)
       return csv;
 

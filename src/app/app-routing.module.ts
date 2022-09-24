@@ -7,6 +7,7 @@ import {HomeComponent} from './home/home.component';
 import {DiffcheckerComponent} from './diffchecker/diffchecker.component';
 import {CaseconverterComponent} from './caseconverter/caseconverter.component';
 import {CsvConverterComponent} from './csv-converter/csv-converter.component';
+import {CsvValidatorComponent} from './csv-validator/csv-validator.component';
 
 const routes: Routes = [
   {path: '', component: DiffcheckerComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'diffchecker', component: DiffcheckerComponent},
   {path: 'caseconverter', component: CaseconverterComponent},
   {path: 'csvconverter', component: CsvConverterComponent},
+  {path: 'csv-validator', component: CsvValidatorComponent},
   {path: 'hero', component: HeroComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},

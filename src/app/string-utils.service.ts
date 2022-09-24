@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {FormControl, ɵValue} from '@angular/forms';
-import {LineBreak} from './csv-converter/csvEnum';
+import {LineBreak, Separator} from './csv-converter/csvEnum';
+import {CsvConverterService} from './csv-converter.service';
 
 @Injectable({
   providedIn: 'root'
@@ -62,5 +63,41 @@ export class StringUtilsService {
     } else {
       return '';
     }
+  }
+
+  static validateCsvFile(s: string | null | undefined, separator: Separator, isFirstColumnNotEmpty: boolean): string {
+    let error: string = '';
+
+    if (s) {
+      const rows = s.split(LineBreak.Default);
+      error += StringUtilsService.validateCsvRow(rows[0], 0, separator, isFirstColumnNotEmpty);
+      const len: number = rows[0].split(separator).length;
+      for (let r = 1; r < rows.length; r++) {
+        error += StringUtilsService.validateCsvRowAndLen(rows[r], r, separator, isFirstColumnNotEmpty, len);
+      }
+    }
+    if (error === '') {
+      return 'File is Valid';
+    } else {
+      return error;
+    }
+  }
+
+  static validateCsvRow(row: string, r: number, separator: Separator, isFirstColumnNotEmpty: boolean): string {
+    const fields = row.split(separator);
+    if (isFirstColumnNotEmpty && !fields[0]) {
+      return `Record #${r} has error: 1st column should NOT be empty! ${CsvConverterService.LINE_BREAK}`;
+    } else {
+      return '';
+    }
+  }
+
+  static validateCsvRowAndLen(row: string, r: number, separator: Separator, isFirstColumnNotEmpty: boolean, len: number): string {
+    let error = StringUtilsService.validateCsvRow(row, r, separator, isFirstColumnNotEmpty);
+    const fields = row.split(separator);
+    if (len != fields.length) {
+      error += `Record #${r} has error: wrong number of fields! ${CsvConverterService.LINE_BREAK}`;
+    }
+    return error;
   }
 }

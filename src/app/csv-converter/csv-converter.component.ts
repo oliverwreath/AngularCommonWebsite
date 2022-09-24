@@ -14,7 +14,7 @@ export class CsvConverterComponent implements OnInit {
   separator: Separator = Separator.Comma;
   outputType: OutputType = OutputType.Array;
 
-  constructor(private csvConverterService: CsvConverterService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.onExample();
@@ -31,14 +31,14 @@ export class CsvConverterComponent implements OnInit {
       return;
     this.test();
 
-    this.outputText = this.csvConverterService.csvToJson(this.inputText, this.separator);
+    this.outputText = CsvConverterService.csvToJson(this.inputText, this.separator);
   }
 
   onToXml() {
     if (!this.inputText)
       return;
 
-    this.outputText = this.csvConverterService.csvToXml(this.inputText);
+    this.outputText = CsvConverterService.csvToXml(this.inputText);
   }
 
   onClear() {
