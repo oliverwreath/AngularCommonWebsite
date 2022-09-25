@@ -18,7 +18,7 @@ export class CsvValidatorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.onExample();
+    // this.onExample();
   }
 
   validate() {
@@ -57,5 +57,21 @@ export class CsvValidatorComponent implements OnInit {
 
   onClearRight() {
     this.outputText = '';
+  }
+
+  onFileChange(event: Event) {
+    const input = event.currentTarget as HTMLInputElement;
+    const files = input.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      console.log(file);
+      const stringPromise: Promise<string> = file.text();
+      console.log(stringPromise);
+      stringPromise.then(
+        (value: string) => this.inputText = value
+      ).catch(
+        (reason) => console.log(reason)
+      )
+    }
   }
 }
