@@ -4,6 +4,7 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class CsvConverterService {
+  static LINE_BREAK_REGEX: RegExp = /\r\n|\n\r|\n|\r/g;
   static LINE_BREAK: string = '\n';
   private static OPENING_BRACKET: string = '{\n';
   private static CLOSING_BRACKET: string = '}';
@@ -17,7 +18,8 @@ export class CsvConverterService {
     if (!csv)
       return csv;
 
-    const rows = csv.split(CsvConverterService.LINE_BREAK);
+    const rows = csv.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
+    console.log(`rows: ${rows}`, rows);
     const headerRow = rows[0];
     const headers = headerRow.split(separator);
     let result: string = CsvConverterService.OPENING_SQUARE_BRACKET;
@@ -27,7 +29,7 @@ export class CsvConverterService {
       const row = rows[r];
       const fields = row.split(separator);
       if (fields.length != size) {
-        console.log(`row has wrong size: ${{fields:length}}. ${{row}}`);
+        console.log(`CsvConverterService.csvToJson: row: ${fields.length} has wrong size: L${row}`, fields);
         continue;
       }
 

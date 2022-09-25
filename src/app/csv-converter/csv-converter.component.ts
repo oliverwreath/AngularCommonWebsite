@@ -24,6 +24,7 @@ export class CsvConverterComponent implements OnInit {
     console.log('testing logs: ')
     console.log(this.separator);
     console.log(this.outputType);
+    console.log(this.inputText);
   }
 
   onToJson() {
@@ -63,5 +64,21 @@ export class CsvConverterComponent implements OnInit {
 
   onClearRight() {
     this.outputText = '';
+  }
+
+  onFileChange(event: Event) {
+    const input = event.currentTarget as HTMLInputElement;
+    const files = input.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      console.log(file);
+      const stringPromise: Promise<string> = file.text();
+      console.log(stringPromise);
+      stringPromise.then(
+        (value: string) => this.inputText = value
+      ).catch(
+        (reason) => console.log(reason)
+      )
+    }
   }
 }
