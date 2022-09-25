@@ -34,7 +34,7 @@ export class CaseconverterComponent implements OnInit {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.split(CsvConverterService.LINE_BREAK);
+    let rows = this.oldText.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
     for (let r = 0; r < rows.length; r++) {
       if (!rows[r])
         continue;
@@ -55,7 +55,7 @@ export class CaseconverterComponent implements OnInit {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.split(CsvConverterService.LINE_BREAK);
+    let rows = this.oldText.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
     for (let r = 0; r < rows.length; r++) {
       if (!rows[r])
         continue;
@@ -99,7 +99,7 @@ export class CaseconverterComponent implements OnInit {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.split(CsvConverterService.LINE_BREAK);
+    let rows = this.oldText.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
     for (let r = 0; r < rows.length; r++) {
       let row = Array.from(rows[r]);
       let left = 0, right = row.length - 1;
@@ -117,7 +117,7 @@ export class CaseconverterComponent implements OnInit {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.split(CsvConverterService.LINE_BREAK);
+    let rows = this.oldText.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
     let left = 0, right = rows.length - 1;
     while (left < right) {
       const tmp = rows[left];
@@ -131,7 +131,7 @@ export class CaseconverterComponent implements OnInit {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.split(CsvConverterService.LINE_BREAK);
+    let rows = this.oldText.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
     for (let r = 0; r < rows.length; r++) {
       if (!rows[r])
         continue;

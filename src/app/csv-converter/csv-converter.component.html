@@ -4,8 +4,9 @@
 <div class="g-3">
   <div class="row">
     <div class="col-md-5">
-      <div class="mb-5">
-        Upload a CSV file
+      <div class="mb-0">
+        <label for="formFile" class="form-label">Upload a CSV file</label>
+        <input (change)="onFileChange($event)" class="form-control" type="file" id="formFile" accept=".csv, text/csv">
       </div>
       <label for="inputOringinalText" class="form-label">Or paste your CSV here</label>
       <textarea class="form-control bg-light" id="inputOringinalText" rows="20" [(ngModel)]="inputText" placeholder="paste your csv here"></textarea>
