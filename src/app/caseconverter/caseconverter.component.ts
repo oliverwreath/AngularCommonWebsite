@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CsvConverterService} from '../csv-converter.service';
+import {CharacterCount} from './characterCount';
 
 @Component({
   selector: 'app-caseconverter',
@@ -10,6 +11,14 @@ export class CaseconverterComponent implements OnInit {
   oldText: string = '';
   private static example: string = 'Example text : Simply enter your, text and choose. the case you want to convert it to. \n 2nd row \n 3rd row';
   private static stopWords: string[] = ["and", "to", "the"];
+  characterCountText: string = '';
+  characterCount: CharacterCount = {
+    CHARACTERS: 0,
+    WORDS: 0,
+    SENTENCES: 0,
+    PARAGRAPHS: 0,
+    SPACES: 0
+  };
 
   constructor() { }
 
@@ -139,5 +148,35 @@ export class CaseconverterComponent implements OnInit {
       rows[r] = rows[r].trim();
     }
     this.oldText = rows.join(CsvConverterService.LINE_BREAK);
+  }
+
+  test(callerMethod: string) {
+    console.log(`${callerMethod}() testing logs: `)
+    console.log(this.oldText);
+    console.log(this.oldText.length);
+    console.log(JSON.stringify(this.characterCount));
+  }
+
+  onCount() {
+    // this.test('onCount');
+    this.characterCount.CHARACTERS = this.oldText.length;
+    this.characterCount.WORDS = this.oldText.split(/\s+/g).length;
+    this.characterCount.SENTENCES = this.oldText.split('.').length;
+    const rows = CsvConverterService.getRows(this.oldText);
+    let pargraphCounter = 0, isReadyForNewParagraph = true;
+    for (let row of rows) {
+      if (!row || row.trim().length === 0) {
+        isReadyForNewParagraph = true;
+        continue;
+      }
+
+      if (isReadyForNewParagraph) {
+        pargraphCounter++;
+        isReadyForNewParagraph = false;
+      }
+    }
+    this.characterCount.PARAGRAPHS = pargraphCounter;
+    this.characterCount.SPACES = (this.oldText.match(/ +/g) || []).length
+    this.characterCountText = JSON.stringify(this.characterCount);
   }
 }

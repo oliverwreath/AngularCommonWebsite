@@ -9,11 +9,15 @@
     </div>
   </div>
   <div class="col-md-12">
+    <label [textContent]="characterCountText" name="characterCountLabel"></label>
+  </div>
+  <div class="col-md-12">
     <button class="btn btn-success" type="button" (click)="onUpper()">UPPER</button>
     <button class="btn btn-success" type="button" (click)="onLower()">lower</button>
     <button class="btn btn-success" type="button" (click)="onCapitalize()">Capitalize</button>
     <button class="btn btn-success" type="button" (click)="onTitleCase()">Title Case</button>
     <button class="btn btn-success" type="button" (click)="onSentenceCase()">Sentence case</button>
+    <button class="btn btn-success" type="button" (click)="onCount()">Count</button>
     <button class="btn btn-success" type="button" (click)="onClear()">Clear</button>
     <button class="btn btn-success" type="button" (click)="onExample()">Example</button>
     <br/>
