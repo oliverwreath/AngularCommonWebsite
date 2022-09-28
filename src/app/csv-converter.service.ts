@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {StringUtilsService} from './string-utils.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class CsvConverterService {
     if (!csv)
       return csv;
 
-    const rows = CsvConverterService.getRows(csv);
+    const rows = StringUtilsService.getRows(csv);
     console.log(`rows: ${rows}`, rows);
     const headerRow = rows[0];
     const headers = headerRow.split(separator);
@@ -62,9 +63,5 @@ export class CsvConverterService {
       return csv;
 
     return csv;
-  }
-
-  static getRows(text: string): string[] {
-    return text.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
   }
 }

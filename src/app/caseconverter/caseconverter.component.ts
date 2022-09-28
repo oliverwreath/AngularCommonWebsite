@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CsvConverterService} from '../csv-converter.service';
 import {CharacterCount} from './characterCount';
+import {StringUtilsService} from '../string-utils.service';
 
 @Component({
   selector: 'app-caseconverter',
@@ -162,7 +163,7 @@ export class CaseconverterComponent implements OnInit {
     this.characterCount.CHARACTERS = this.oldText.length;
     this.characterCount.WORDS = this.oldText.split(/\s+/g).length;
     this.characterCount.SENTENCES = this.oldText.split('.').length;
-    const rows = CsvConverterService.getRows(this.oldText);
+    const rows = StringUtilsService.getRows(this.oldText);
     let pargraphCounter = 0, isReadyForNewParagraph = true;
     for (let row of rows) {
       if (!row || row.trim().length === 0) {
