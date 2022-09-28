@@ -96,7 +96,7 @@ export class StringUtilsService {
     let error = StringUtilsService.validateCsvRow(row, r, separator, isFirstColumnNotEmpty);
     const fields = row.split(separator);
     if (len != fields.length) {
-      error += `Record #${r} has error: wrong number of fields! ${CsvConverterService.LINE_BREAK}`;
+      error += `Record #${r} has error: wrong number of fields! Found ${fields.length}, should be ${len}!${CsvConverterService.LINE_BREAK}`;
     }
     return error;
   }
