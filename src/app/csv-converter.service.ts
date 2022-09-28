@@ -18,7 +18,7 @@ export class CsvConverterService {
     if (!csv)
       return csv;
 
-    const rows = csv.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
+    const rows = CsvConverterService.getRows(csv);
     console.log(`rows: ${rows}`, rows);
     const headerRow = rows[0];
     const headers = headerRow.split(separator);
@@ -62,5 +62,9 @@ export class CsvConverterService {
       return csv;
 
     return csv;
+  }
+
+  static getRows(text: string): string[] {
+    return text.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
   }
 }
