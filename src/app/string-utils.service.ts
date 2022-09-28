@@ -100,4 +100,27 @@ export class StringUtilsService {
     }
     return error;
   }
+
+  static getRows(text: string): string[] {
+    return text.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
+  }
+
+  // TODO: move into a ng generate service csvUtil
+  static countUniqueNthColumn(inputText: string, n: number, separator: Separator): string {
+    if (!inputText)
+      return '';
+
+    const rows = StringUtilsService.getRows(inputText);
+    const map = new Map<string, number>();
+    for (let r = 1; r < rows.length; r++) {
+      const row: string = rows[r];
+      const fields: string[] = row.split(separator);
+      const key: string = fields[n - 1];
+      const val = map?.get(key);
+      map.set(key, (val?val:0) + 1);
+    }
+    console.log(map);
+    console.log(JSON.stringify(map));
+    return JSON.stringify(map, (_key, value) => (value instanceof Map ? [...value] : value));
+  }
 }

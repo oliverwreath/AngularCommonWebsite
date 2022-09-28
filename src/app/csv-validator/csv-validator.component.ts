@@ -74,4 +74,30 @@ export class CsvValidatorComponent implements OnInit {
       )
     }
   }
+
+  countUnique1stColumn() {
+    if (!this.inputText)
+      return;
+    this.test();
+
+    this.outputText = StringUtilsService.countUniqueNthColumn(this.inputText, 1, this.separator);
+  }
+
+
+
+  count2ndColumn() {
+    if (!this.inputText)
+      return;
+    this.test();
+
+    this.outputText = StringUtilsService.countUniqueNthColumn(this.inputText, 2, this.separator);
+  }
+
+  count3rdColumn() {
+    if (!this.inputText)
+      return;
+    this.test();
+
+    this.outputText = StringUtilsService.countUniqueNthColumn(this.inputText, 3, this.separator);
+  }
 }
