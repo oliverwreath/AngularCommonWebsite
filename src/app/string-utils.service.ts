@@ -124,4 +124,51 @@ export class StringUtilsService {
     console.log(JSON.stringify(map));
     return JSON.stringify(map, (_key, value) => (value instanceof Map ? [...value] : value));
   }
+
+  static SELECT: string = 'SELECT';
+  static FROM: string = 'FROM';
+  static WHERE: string = 'WHERE';
+  static GROUP_BY: string = 'ORDER BY';
+  static validateSQL(s: string | null | undefined, separator: Separator, isFirstColumnNotEmpty: boolean): string {
+    let error: string = '';
+
+    if (s) {
+      s = StringUtilsService.replaceLineBreaksWithSpaces(s).toUpperCase();
+      if (s.includes(StringUtilsService.SELECT)) {
+        error += StringUtilsService.validateSQLSelect(s, separator, isFirstColumnNotEmpty);
+      }
+      // error += StringUtilsService.validateCsvRow(rows[0], 0, separator, isFirstColumnNotEmpty);
+      // const len: number = rows[0].split(separator).length;
+      // for (let r = 1; r < rows.length; r++) {
+      //   error += StringUtilsService.validateCsvRowAndLen(rows[r], r, separator, isFirstColumnNotEmpty, len);
+      // }
+    }
+    if (error === '') {
+      return 'File is Valid';
+    } else {
+      return error;
+    }
+  }
+
+  static validateSQLSelect(s: string | null | undefined, separator: Separator, isFirstColumnNotEmpty: boolean): string {
+    let error: string = '';
+
+    if (s) {
+      s = s.replace(LineBreak.Default, ' ').toUpperCase();
+      const s1 = s.substring(s.indexOf(this.SELECT), s.indexOf(this.FROM));
+      const thirdIndex = s.indexOf(this.WHERE)==-1?s.indexOf(this.GROUP_BY):s.indexOf(this.WHERE);
+      console.log(s.indexOf(this.WHERE));
+      console.log(s.indexOf(this.GROUP_BY))
+      const s2 = s.substring(s.indexOf(this.FROM), thirdIndex);
+      const s3 = s.substring(thirdIndex);
+      console.log(s1);
+      console.log(s2);
+      console.log(s3);
+    }
+    if (error === '') {
+      return 'File is Valid';
+    } else {
+      return error;
+    }
+  }
 }

@@ -8,6 +8,8 @@ import {DiffcheckerComponent} from './diffchecker/diffchecker.component';
 import {CaseconverterComponent} from './caseconverter/caseconverter.component';
 import {CsvConverterComponent} from './csv-converter/csv-converter.component';
 import {CsvValidatorComponent} from './csv-validator/csv-validator.component';
+import {SqlValidatorComponent} from './sql-validator/sql-validator.component';
+import {SqlCheatsheetComponent} from './sql-cheatsheet/sql-cheatsheet.component';
 
 const routes: Routes = [
   {path: '', component: DiffcheckerComponent},
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'caseconverter', component: CaseconverterComponent},
   {path: 'csvconverter', component: CsvConverterComponent},
   {path: 'csv-validator', component: CsvValidatorComponent},
+  {path: 'sql-cheatsheet', component: SqlCheatsheetComponent},
+  {path: 'sql-validator', component: SqlValidatorComponent},
   {path: 'hero', component: HeroComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},
