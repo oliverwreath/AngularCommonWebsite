@@ -16,6 +16,8 @@ import {CaseconverterComponent} from './caseconverter/caseconverter.component';
 import {NgxDiffModule} from 'ngx-diff';
 import {CsvConverterComponent} from './csv-converter/csv-converter.component';
 import {CsvValidatorComponent} from './csv-validator/csv-validator.component';
+import {SqlValidatorComponent} from './sql-validator/sql-validator.component';
+import {SqlCheatsheetComponent} from './sql-cheatsheet/sql-cheatsheet.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {CsvValidatorComponent} from './csv-validator/csv-validator.component';
     DiffcheckerComponent,
     CaseconverterComponent,
     CsvConverterComponent,
-    CsvValidatorComponent
+    CsvValidatorComponent,
+    SqlValidatorComponent,
+    SqlCheatsheetComponent
   ],
   imports: [
     BrowserModule,

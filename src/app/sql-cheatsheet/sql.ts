@@ -1,0 +1,8 @@
+export enum SQLType {
+  SELECT = 'SELECT',
+  INSERT = 'INSERT',
+  UPDATE = 'UPDATE',
+  TABLE = 'TABLE',
+  DATABASE = 'DATABASE',
+  FUNCTION = 'FUNCTION'
+}
