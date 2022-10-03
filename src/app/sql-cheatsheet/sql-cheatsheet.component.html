@@ -5,13 +5,9 @@
   <div class="row">
     <div class="col-md-5">
       <div class="form-check-inline">
-        <label for="separator" class="form-label">Separator</label>
-        <select [(ngModel)]="sqlType" (ngModelChange)="onChange($event)" id="separator" class="form-select" aria-label="Default select example">
+        <select [(ngModel)]="sqlType" (ngModelChange)="onChange($event)" id="sqlTypeId" class="form-select"
+                aria-label="Default select example">
           <option *ngFor="let sqlType of SQLTypes | keyvalue" value="{{sqlType.key}}">{{ sqlType.value}}</option>
-          <!--          <option selected value="SELECT">SELECT</option>-->
-<!--          <option value="INSERT">INSERT</option>-->
-<!--          <option value="UPDATE">UPDATE</option>-->
-<!--          <option value="FUNCTION">FUNCTION</option>-->
         </select>
       </div>
       <label for="inputOringinalText" class="form-label">Example Input</label>
@@ -37,5 +33,6 @@
       <button class="btn btn-success" type="button" (click)="onClearRight()">Clear</button>
     </div>
     <a href="https://www.w3schools.com/sql/sql_examples.asp">examples</a>
+    <img src="/assets/sqlCheatSheet.png" alt="sqlCheatSheet"/>
   </div>
 </div>
