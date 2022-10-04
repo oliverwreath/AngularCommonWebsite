@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {OutputType, Separator} from '../csv-converter/csvEnum';
-import {StringUtilsService} from '../string-utils.service';
+import {CsvUtilsService} from '../csv-utils.service';
 
 @Component({
   selector: 'app-csv-validator',
@@ -18,7 +18,7 @@ export class CsvValidatorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // this.onExample();
+    this.onExample();
   }
 
   validate() {
@@ -26,7 +26,7 @@ export class CsvValidatorComponent implements OnInit {
       return;
     this.test();
 
-    this.outputText = StringUtilsService.validateCsvFile(this.inputText, this.separator, this.isFirstColumnNotEmpty);
+    this.outputText = CsvUtilsService.validateCsvFile(this.inputText, this.separator, this.isFirstColumnNotEmpty);
   }
 
   test() {
@@ -80,7 +80,7 @@ export class CsvValidatorComponent implements OnInit {
       return;
     this.test();
 
-    this.outputText = StringUtilsService.countUniqueNthColumn(this.inputText, 1, this.separator);
+    this.outputText = CsvUtilsService.countUniqueNthColumn(this.inputText, 1, this.separator);
   }
 
 
@@ -90,7 +90,7 @@ export class CsvValidatorComponent implements OnInit {
       return;
     this.test();
 
-    this.outputText = StringUtilsService.countUniqueNthColumn(this.inputText, 2, this.separator);
+    this.outputText = CsvUtilsService.countUniqueNthColumn(this.inputText, 2, this.separator);
   }
 
   count3rdColumn() {
@@ -98,6 +98,6 @@ export class CsvValidatorComponent implements OnInit {
       return;
     this.test();
 
-    this.outputText = StringUtilsService.countUniqueNthColumn(this.inputText, 3, this.separator);
+    this.outputText = CsvUtilsService.countUniqueNthColumn(this.inputText, 3, this.separator);
   }
 }
