@@ -126,9 +126,17 @@ export class StringUtilsService {
   static getUnderscoreFromCamelCase(words: string[]) {
     for (let w = 0; w < words.length; w++) {
       var ws = words[w].trim().replace(/([a-z])([A-Z])/g, '$1_$2');
-      console.log(ws);
+      // console.log(ws);
       words[w] = ws;
     }
     return words.join('');
+  }
+
+  static get1stCharUpper(word: string): string {
+    return word[0].toUpperCase() + word.slice(1);
+  }
+
+  static get1stCharLower(word: string): string {
+    return word[0].toLowerCase() + word.slice(1);
   }
 }
