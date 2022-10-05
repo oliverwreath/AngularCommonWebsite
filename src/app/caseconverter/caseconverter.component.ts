@@ -10,8 +10,8 @@ import {StringUtilsService} from '../string-utils.service';
 })
 export class CaseconverterComponent implements OnInit {
   oldText: string = '';
-  private static example: string = 'Example text : Simply enter your, text and choose. the case you want to convert it to. \n 2nd row \n 3rd row';
-  private static stopWords: string[] = ["and", "to", "the"];
+  private static example: string = 'Example text : Simply enter your, text and choose. the case you want to convert it to. \n 2nd row \n 3rd row \n MyCamelCaseString \n XYZMyCamelCaseString\nPDFSplitAndMergeSamples\nalllowercase';
+  private static stopWords: string[] = ['and', 'to', 'the'];
   characterCountText: string = '';
   characterCount: CharacterCount = {
     CHARACTERS: 0,
@@ -44,7 +44,7 @@ export class CaseconverterComponent implements OnInit {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
+    let rows = StringUtilsService.getRows(this.oldText);
     for (let r = 0; r < rows.length; r++) {
       if (!rows[r])
         continue;
@@ -65,7 +65,7 @@ export class CaseconverterComponent implements OnInit {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
+    let rows = StringUtilsService.getRows(this.oldText);
     for (let r = 0; r < rows.length; r++) {
       if (!rows[r])
         continue;
@@ -109,7 +109,7 @@ export class CaseconverterComponent implements OnInit {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
+    let rows = StringUtilsService.getRows(this.oldText);
     for (let r = 0; r < rows.length; r++) {
       let row = Array.from(rows[r]);
       let left = 0, right = row.length - 1;
@@ -127,7 +127,7 @@ export class CaseconverterComponent implements OnInit {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
+    let rows = StringUtilsService.getRows(this.oldText);
     let left = 0, right = rows.length - 1;
     while (left < right) {
       const tmp = rows[left];
@@ -141,7 +141,7 @@ export class CaseconverterComponent implements OnInit {
     if (!this.oldText)
       return;
 
-    let rows = this.oldText.replace(CsvConverterService.LINE_BREAK_REGEX,"\n").split(CsvConverterService.LINE_BREAK);
+    let rows = StringUtilsService.getRows(this.oldText);
     for (let r = 0; r < rows.length; r++) {
       if (!rows[r])
         continue;
@@ -159,6 +159,10 @@ export class CaseconverterComponent implements OnInit {
   }
 
   onCount() {
+    if (!this.oldText) {
+      return;
+    }
+
     // this.test('onCount');
     this.characterCount.CHARACTERS = this.oldText.length;
     this.characterCount.WORDS = this.oldText.split(/\s+/g).length;
@@ -177,7 +181,39 @@ export class CaseconverterComponent implements OnInit {
       }
     }
     this.characterCount.PARAGRAPHS = pargraphCounter;
-    this.characterCount.SPACES = (this.oldText.match(/ +/g) || []).length
+    this.characterCount.SPACES = (this.oldText.match(/ +/g) || []).length;
     this.characterCountText = JSON.stringify(this.characterCount);
+  }
+
+  onUnderscoreToCamelCase() {
+    if (!this.oldText) {
+      return;
+    }
+
+    let rows = StringUtilsService.getRows(this.oldText);
+    for (let r = 0; r < rows.length; r++) {
+      if (!rows[r]) {
+        continue;
+      }
+
+      rows[r] = StringUtilsService.getCamelCase(rows[r].split('_'));
+    }
+    this.oldText = rows.join(CsvConverterService.LINE_BREAK);
+  }
+
+  onCamelCaseToUnderscore() {
+    if (!this.oldText) {
+      return;
+    }
+
+    let rows = StringUtilsService.getRows(this.oldText);
+    for (let r = 0; r < rows.length; r++) {
+      if (!rows[r]) {
+        continue;
+      }
+
+      rows[r] = StringUtilsService.getUnderscoreFromCamelCase(rows[r].split('_'));
+    }
+    this.oldText = rows.join(CsvConverterService.LINE_BREAK);
   }
 }
