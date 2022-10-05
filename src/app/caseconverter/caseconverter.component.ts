@@ -216,4 +216,36 @@ export class CaseconverterComponent implements OnInit {
     }
     this.oldText = rows.join(CsvConverterService.LINE_BREAK);
   }
+
+  on1stCharUpper() {
+    if (!this.oldText) {
+      return;
+    }
+
+    let rows = StringUtilsService.getRows(this.oldText);
+    for (let r = 0; r < rows.length; r++) {
+      if (!rows[r]) {
+        continue;
+      }
+
+      rows[r] = StringUtilsService.get1stCharUpper(rows[r]);
+    }
+    this.oldText = rows.join(CsvConverterService.LINE_BREAK);
+  }
+
+  on1stCharLower() {
+    if (!this.oldText) {
+      return;
+    }
+
+    let rows = StringUtilsService.getRows(this.oldText);
+    for (let r = 0; r < rows.length; r++) {
+      if (!rows[r]) {
+        continue;
+      }
+
+      rows[r] = StringUtilsService.get1stCharLower(rows[r]);
+    }
+    this.oldText = rows.join(CsvConverterService.LINE_BREAK);
+  }
 }
