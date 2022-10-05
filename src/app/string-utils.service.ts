@@ -115,4 +115,20 @@ export class StringUtilsService {
       return error;
     }
   }
+
+  static getCamelCase(words: string[]): string {
+    for (let w = 0; w < words.length; w++) {
+      words[w] = words[w][0].toUpperCase() + words[w].slice(1).toLowerCase();
+    }
+    return words.join('');
+  }
+
+  static getUnderscoreFromCamelCase(words: string[]) {
+    for (let w = 0; w < words.length; w++) {
+      var ws = words[w].trim().replace(/([a-z])([A-Z])/g, '$1_$2');
+      console.log(ws);
+      words[w] = ws;
+    }
+    return words.join('');
+  }
 }
