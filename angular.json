@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Angular-RESTful:build:production"
+              "buildTarget": "Angular-RESTful:build:production"
             },
             "development": {
-              "browserTarget": "Angular-RESTful:build:development"
+              "buildTarget": "Angular-RESTful:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Angular-RESTful:build"
+            "buildTarget": "Angular-RESTful:build"
           }
         },
         "test": {
