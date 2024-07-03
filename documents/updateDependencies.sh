@@ -25,3 +25,6 @@ npm install
 #@angular/cli                    14.2.13
 ng version
 ng update
+
+#https://www.npmjs.com/package/gh-pages
+#6.1.1
