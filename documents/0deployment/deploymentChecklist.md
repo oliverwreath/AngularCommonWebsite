@@ -1,3 +1,18 @@
+# If the domain is unreachable
+Subdomains are configured with a CNAME record through your DNS provider. For more information, see "Managing a custom domain for your GitHub Pages site."
+https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain
+Subdomain
+(www.example.com,
+blog.example.com)	CNAME	SUBDOMAIN	USERNAME.github.io or
+ORGANIZATION.github.io
+
+So, in host > add CNAME > oliverwreath.github.io/Angular-RESTful/ > 
+![img.png](img.png)
+
+Then test reachable:
+https://oliverwreath.github.io/Angular-RESTful/
+https://todo.oliverhan.org/
+
 # Initial Setup (start afresh cheatsheet)
 ```bash
 # angular-cli
