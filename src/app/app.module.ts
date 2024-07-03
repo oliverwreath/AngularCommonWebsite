@@ -1,4 +1,4 @@
-import {HttpClientModule} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
@@ -19,31 +19,26 @@ import {CsvValidatorComponent} from './csv-validator/csv-validator.component';
 import {SqlValidatorComponent} from './sql-validator/sql-validator.component';
 import {SqlCheatsheetComponent} from './sql-cheatsheet/sql-cheatsheet.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    NavComponent,
-    AboutComponent,
-    ContactComponent,
-    HeroComponent,
-    HomeComponent,
-    DiffcheckerComponent,
-    CaseconverterComponent,
-    CsvConverterComponent,
-    CsvValidatorComponent,
-    SqlValidatorComponent,
-    SqlCheatsheetComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    NgxDiffModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        NavComponent,
+        AboutComponent,
+        ContactComponent,
+        HeroComponent,
+        HomeComponent,
+        DiffcheckerComponent,
+        CaseconverterComponent,
+        CsvConverterComponent,
+        CsvValidatorComponent,
+        SqlValidatorComponent,
+        SqlCheatsheetComponent
+    ],
+    bootstrap: [AppComponent],
+    imports: [BrowserModule,
+        RouterModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        NgxDiffModule],
+    providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
