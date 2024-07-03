@@ -28,3 +28,5 @@ ng update
 
 #https://www.npmjs.com/package/gh-pages
 #6.1.1
+npm view gh-pages version
+npm install gh-pages@latest --save-dev
